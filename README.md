@@ -1,5 +1,5 @@
 ## Material Board
-Implementation of social media user panel with material-ui and react
+Implementation of social media user panel with Material UI and React
 
 <br/>
 
@@ -32,7 +32,7 @@ https://accelerator-one.github.io/material-board/
 
 - Generating production build
   ```bash
-  npm build
+  npm run build
   ```
 
 <br/>
