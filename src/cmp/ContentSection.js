@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Content panel
 class ContentSection extends React.Component {
@@ -10,14 +10,18 @@ class ContentSection extends React.Component {
   }
 
   // TODO: Replace with page components
+  conditionalRouter = ()=> {
+
+    const path = String(this.props.location.pathname);
+    if(path.endsWith('/settings'))
+       return "Settings";
+
+    return "Home";   
+  }
+
   render() {
-    return (
-      <Switch>
-        <Route path='/settings' exact> Settings </Route>
-        <Route path='/' > Home </Route>
-      </Switch>
-    )
+    return (<> { this.conditionalRouter() } </>);
   }
 };
 
-export default ContentSection;
+export default withRouter(ContentSection);

@@ -28,7 +28,7 @@ class SideBar extends React.Component {
   }
 
   isSelected = (path) => {
-    return String(this.props.location.pathname) === path;
+    return String(this.props.location.pathname).endsWith(path);
   }
 
   openDialog = () => {
@@ -58,14 +58,14 @@ class SideBar extends React.Component {
 
         <List>
 
-          <NavLink to="/" style={style}>
-            <ListItem button key="Home" selected={this.isSelected("/")}>
+          <NavLink to="./" style={style}>
+            <ListItem button key="Home" selected={this.isSelected("")}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </NavLink>
 
-          <NavLink to="/settings" style={style}>
+          <NavLink to="./settings" style={style}>
             <ListItem button key="Settings" selected={this.isSelected("/settings")}>
               <ListItemIcon><SettingsIcon /></ListItemIcon>
               <ListItemText primary="Settings" />
