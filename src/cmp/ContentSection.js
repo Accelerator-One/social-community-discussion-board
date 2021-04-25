@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+// Page components
+import Settings from '../pages/Settings.js';
+
 // Content panel
 class ContentSection extends React.Component {
 
@@ -14,7 +17,7 @@ class ContentSection extends React.Component {
 
     const path = String(this.props.location.pathname);
     if(path.endsWith('/settings'))
-       return "Settings";
+       return <Settings/>;
 
     return "Home";   
   }
