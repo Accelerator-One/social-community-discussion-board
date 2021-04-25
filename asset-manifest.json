@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/material-board/static/css/main.784512a7.chunk.css",
-    "main.js": "/material-board/static/js/main.6b86c9fb.chunk.js",
+    "main.js": "/material-board/static/js/main.e6485c40.chunk.js",
     "runtime-main.js": "/material-board/static/js/runtime-main.90ba7844.js",
-    "static/js/2.59d5f911.chunk.js": "/material-board/static/js/2.59d5f911.chunk.js",
+    "static/js/2.ae8000d8.chunk.js": "/material-board/static/js/2.ae8000d8.chunk.js",
     "index.html": "/material-board/index.html",
-    "static/js/2.59d5f911.chunk.js.LICENSE.txt": "/material-board/static/js/2.59d5f911.chunk.js.LICENSE.txt"
+    "static/js/2.ae8000d8.chunk.js.LICENSE.txt": "/material-board/static/js/2.ae8000d8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.90ba7844.js",
-    "static/js/2.59d5f911.chunk.js",
+    "static/js/2.ae8000d8.chunk.js",
     "static/css/main.784512a7.chunk.css",
-    "static/js/main.6b86c9fb.chunk.js"
+    "static/js/main.e6485c40.chunk.js"
   ]
 }
