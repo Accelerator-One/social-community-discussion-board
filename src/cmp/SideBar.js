@@ -59,7 +59,7 @@ class SideBar extends React.Component {
         <List>
 
           <NavLink to="./" style={style}>
-            <ListItem button key="Home" selected={this.isSelected("")}>
+            <ListItem button key="Home" selected={this.isSelected("/")}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
