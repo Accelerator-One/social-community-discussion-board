@@ -6,7 +6,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 
 import Typography from '@material-ui/core/Typography';
-import { blue, red } from '@material-ui/core/colors';
+import { red, purple } from '@material-ui/core/colors';
 
 // Card component(s)
 import Card from '@material-ui/core/Card';
@@ -45,20 +45,40 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: blue[500],
+    backgroundColor: purple[500],
     fontSize: 'large',
     padding: '1em'
   }
 }));
 
-export default function RecipeReviewCard() {
+export default function Post() {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [liked, setLiked] = React.useState(false);
+  const [comments, addComment] = React.useState([
+    { "uid":"1", "name":"Newton", "message":"I'll just pass on this one..."},
+    { "uid":"2", "name":"Kelper", "message":"Wow! looks great"}
+  ]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const submitComment = (evt) => {
+
+    if(evt.code === 'Enter') {
+      let uid = comments.length;
+      let name = 'Aditya Thakur';
+      let message = evt.target.value;
+
+      addComment([{uid, name, message},...comments]);
+      evt.target.value = "";
+      setExpanded(true);
+
+    }
+    // addComment()
+
   };
 
   return (
@@ -103,7 +123,8 @@ export default function RecipeReviewCard() {
           size={'small'}
           fullWidth={true}
           placeholder='Add comment here...'
-          style={{ 'maxWidth': '480px' }}>
+          style={{ 'maxWidth': '480px' }}
+          onKeyUp={(evt) => submitComment(evt)}>
         </TextField>
 
         <IconButton
@@ -120,8 +141,16 @@ export default function RecipeReviewCard() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
 
-          {/* TODO: Replace with mapper later */}
-          <Comment uid="1" name="Vedika" message="I just want an iPhone!" />
+          {
+            // Comments list
+            comments.map(({uid, name, message}) => {
+              return (<span key={uid}>
+                        <br/>
+                        <Comment uid={uid} name={name} message={message} />
+                        <br/>
+                      </span>);
+            })
+          }
 
           <br />
 

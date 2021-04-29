@@ -1,5 +1,5 @@
 // Environment dependencies
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 // Material component(s)
 import Grid from '@material-ui/core/Grid';
@@ -33,7 +33,7 @@ const styles = {
 };
 
 // Settings component
-class Settings extends Component {
+class Settings extends PureComponent {
 
   constructor(props) {
     super(props);

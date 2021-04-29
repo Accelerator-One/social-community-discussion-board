@@ -1,5 +1,5 @@
 // Environment dependencies
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 // Material dependencies
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +13,7 @@ import Post from '../cmp/Post.js';
 import Avatar from '@material-ui/core/Avatar';
 
 // Home component
-class Home extends Component {
+class Home extends PureComponent {
 
   constructor(props) {
     super(props);
