@@ -1,7 +1,8 @@
+// Environment dependencies
 import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 
-// Item component(s)
+// List component(s)
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -42,13 +43,14 @@ class SideBar extends React.Component {
   render() {
 
     const style = {
-      'textDecoration': 'none',
-      'color': 'rgba(0,0,0.87)'
-    }
-
-    const flex = {
-      "display": "flex",
-      "justifyContent": "center"
+      link: {
+        'textDecoration': 'none',
+        'color': 'rgba(0,0,0.87)'
+      },
+      flex: {
+        "display": "flex",
+        "justifyContent": "center"
+      }
     };
 
     return (
@@ -58,14 +60,14 @@ class SideBar extends React.Component {
 
         <List>
 
-          <NavLink to="./" style={style}>
+          <NavLink to="./" style={style.link}>
             <ListItem button key="Home" selected={this.isSelected("/")}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </NavLink>
 
-          <NavLink to="./settings" style={style}>
+          <NavLink to="./settings" style={style.link}>
             <ListItem button key="Settings" selected={this.isSelected("/settings")}>
               <ListItemIcon><SettingsIcon /></ListItemIcon>
               <ListItemText primary="Settings" />
@@ -91,7 +93,7 @@ class SideBar extends React.Component {
         >
 
           <DialogContent>
-            <DialogContentText style={flex}>
+            <DialogContentText style={style.flex}>
               <CircularProgress />
             </DialogContentText>
           </DialogContent>

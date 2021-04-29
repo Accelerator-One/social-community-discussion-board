@@ -1,3 +1,4 @@
+// Environment dependencies
 import React, { Component } from 'react';
 
 // Material component(s)
@@ -16,20 +17,19 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Avatar from '@material-ui/core/Avatar';
 
-// Style config
+// Style configuration
 const styles = {
   paper: {
-    'width': '60vw',
-    'maxWidth': '480px',
-    'padding': '1.6em'
+    width: '60vw',
+    maxWidth: '480px',
+    padding: '1.6em'
   },
   avatar: {
-    'width': '2em',
-    'height': '2em',
-    'fontSize': '4em',
-    'margin': '0.8em',
-    'backgroundColor': '#1e88e5',
-    'color': 'white'
+    alignItems: "center",
+    width: '2em',
+    height: '2em',
+    fontSize: 'xxx-large',
+    backgroundColor: '#1e88e5'
   }
 };
 
@@ -40,19 +40,65 @@ class Settings extends Component {
     super(props);
     this.state = {
       open: false,
-      note: ""
+      error: false,
+      name: "Aditya",
+      note: "",
+      bio: ""
     };
   }
 
   // Snackbar open
   openSnackBar = (note) => {
-    this.setState({ open: true, note });
+    this.setState({ ...this.state, open: true, note });
   }
 
   // Snackbar close
   closeSnackBar = () => {
-    this.setState({ open: false, note: "" });
+    this.setState({ ...this.state, open: false, note: "" });
   }
+
+  // Clean text fields
+  cleaner = () => {
+
+    const nameRef = document.getElementById('name');
+    const bioRef = document.getElementById('bio');
+
+    nameRef.value = "";
+    bioRef.value = "";
+
+    this.validate();
+    this.openSnackBar("Fields cleared successfully");
+
+  }
+
+  // Save changes
+  saveChanges = async () => {
+
+    let name = document.getElementById('name').value;
+    let bio = document.getElementById('bio').value;
+
+    if (name.length === 0) {
+      this.openSnackBar("Name field cannot be empty");
+      this.validate();
+      return;
+    }
+
+    await this.setState({ ...this.state, name, bio });
+    this.openSnackBar("Changes saved");
+
+  }
+
+  // Validation component
+  validate = () => {
+
+    let name = document.getElementById('name').value;
+
+    if (name.length === 0)
+      this.setState({ ...this.state, error: true });
+    else
+      this.setState({ ...this.state, error: false });
+  }
+
 
   render() {
     return (
@@ -64,20 +110,26 @@ class Settings extends Component {
             <Typography variant='h5'>
               Edit Profile
             </Typography>
+            <br />
 
             <Grid container justify="center">
 
-              <Avatar variant={"circle"} style={styles.avatar}> A </Avatar>
+              <Avatar variant={"circle"} style={styles.avatar}> {this.state.name[0].toUpperCase()} </Avatar>
+
               <Grid item xs={10}>
 
+                <br />
                 <TextField
-                  id='name'
+                  id='name' error={this.state.error}
                   autoFocus={true}
                   variant='outlined'
                   required={true}
                   margin={"dense"}
                   label={"Name"}
                   fullWidth={true}
+                  placeholder="Your name here"
+                  helperText="Name field cannot be empty"
+                  onChange={this.validate}
                 />
 
                 <TextField
@@ -87,8 +139,8 @@ class Settings extends Component {
                   label={"About"}
                   multiline={true}
                   fullWidth={true}
-                  size={4}
                   rows={2}
+                  placeholder="Write something about yourself"
                 />
 
               </Grid>
@@ -99,14 +151,14 @@ class Settings extends Component {
 
             <Grid container justify="space-between">
 
-              <Button>
-                Cancel
+              <Button onClick={this.cleaner}>
+                Clear
               </Button>
 
               <Button color="primary"
                 variant="contained"
                 disableFocusRipple={false}
-                onClick={() => this.openSnackBar("Saved")}>
+                onClick={this.saveChanges}>
                 Save
               </Button>
 
