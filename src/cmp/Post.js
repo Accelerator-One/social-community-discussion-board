@@ -16,7 +16,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 
 // Icon component(s)
-import ShareIcon from '@material-ui/icons/Share';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FavoriteIcon from '@material-ui/icons/Favorite';

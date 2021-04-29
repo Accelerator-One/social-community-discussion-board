@@ -1,0 +1,117 @@
+{
+  "src/App.js": {
+    "description": "",
+    "displayName": "App",
+    "methods": []
+  },
+  "src/Content.js": {
+    "description": "",
+    "displayName": "Content",
+    "methods": [
+      {
+        "name": "conditionalRouter",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ]
+  },
+  "src/cmp/Comment.js": {
+    "description": "",
+    "displayName": "Comment",
+    "methods": []
+  },
+  "src/cmp/Post.js": {
+    "description": "",
+    "displayName": "RecipeReviewCard",
+    "methods": []
+  },
+  "src/cmp/SideBar.js": {
+    "description": "",
+    "displayName": "SideBar",
+    "methods": [
+      {
+        "name": "isSelected",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "path",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "openDialog",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "closeDialog",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ]
+  },
+  "src/pages/Home.js": {
+    "description": "",
+    "displayName": "Home",
+    "methods": []
+  },
+  "src/pages/Settings.js": {
+    "description": "",
+    "displayName": "Settings",
+    "methods": [
+      {
+        "name": "openSnackBar",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "note",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "closeSnackBar",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "cleaner",
+        "docblock": null,
+        "modifiers": [
+          "async"
+        ],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "saveChanges",
+        "docblock": null,
+        "modifiers": [
+          "async"
+        ],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "validate",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ]
+  }
+}

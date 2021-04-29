@@ -37,6 +37,11 @@ https://accelerator-one.github.io/material-board/
   npm run build
   ```
 
+- Generating component documentation
+  ```bash
+  npx react-docgen . -o docs.json --pretty
+  ```
+
 <br/>
 
 ### Issues
