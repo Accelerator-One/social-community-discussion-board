@@ -58,7 +58,7 @@ class Settings extends Component {
   }
 
   // Clean text fields
-  cleaner = () => {
+  cleaner = async () => {
 
     const nameRef = document.getElementById('name');
     const bioRef = document.getElementById('bio');
@@ -66,7 +66,7 @@ class Settings extends Component {
     nameRef.value = "";
     bioRef.value = "";
 
-    this.validate();
+    await this.validate();
     this.openSnackBar("Fields cleared successfully");
 
   }
