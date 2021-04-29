@@ -1,19 +1,21 @@
+// Environment dependencies
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-// Page components
-import Home from '../pages/Home.js';
-import Settings from '../pages/Settings.js';
+// Page component(s)
+import Home from './pages/Home.js';
+import Settings from './pages/Settings.js';
 
 // Content panel
-class ContentSection extends React.Component {
+class Content extends React.Component {
 
+  // TODO: Initialize 'react-redux' store via stub
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  // TODO: Replace with page components
+  // REASON: Support for branched paths on 'gh-pages'
   conditionalRouter = () => {
 
     const path = String(this.props.location.pathname);
@@ -28,4 +30,4 @@ class ContentSection extends React.Component {
   }
 };
 
-export default withRouter(ContentSection);
+export default withRouter(Content);

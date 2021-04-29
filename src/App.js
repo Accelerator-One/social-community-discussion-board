@@ -1,6 +1,6 @@
 // Main dependencies
-import React from 'react';
 import './App.css';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 // Style component(s)
@@ -22,7 +22,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 // Nested component(s)
 import SideBar from './cmp/SideBar.js';
-import ContentSection from './cmp/ContentSection.js';
+import Content from './Content.js';
 
 // Style configuration
 const drawerWidth = 240;
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Persistent Drawer: Material UI
+// Persistent drawer
 export default function App() {
 
   const classes = useStyles();
@@ -155,7 +155,7 @@ export default function App() {
 
           <div className={classes.drawerHeader} />
 
-          <ContentSection />
+          <Content />
 
         </main>
 
