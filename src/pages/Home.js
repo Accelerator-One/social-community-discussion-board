@@ -30,11 +30,8 @@ class Home extends Component {
       },
       avatar: {
         backgroundColor: blue[500],
-        display: "flex",
-        alignItems: "center",
-        width: '2em',
-        height: '2em',
-        fontSize: 'xx-large'
+        fontSize: 'xxx-large',
+        padding: '1em'
       },
       center: {
         display: 'flex',

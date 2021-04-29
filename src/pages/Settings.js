@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from "@material-ui/core/TextField";
+import { blue } from '@material-ui/core/colors';
 
 // Snackbar compoenent(s)
 import Snackbar from '@material-ui/core/Snackbar';
@@ -25,11 +26,9 @@ const styles = {
     padding: '1.6em'
   },
   avatar: {
-    alignItems: "center",
-    width: '2em',
-    height: '2em',
+    backgroundColor: blue[500],
     fontSize: 'xxx-large',
-    backgroundColor: '#1e88e5'
+    padding: '1em'
   }
 };
 
@@ -105,7 +104,7 @@ class Settings extends Component {
       <>
         <br /><br />
         <Grid container justify="center" spacing={6}>
-          <Paper style={styles.paper} elevation={2}>
+          <Paper style={styles.paper} elevation={24}>
 
             <Typography variant='h5'>
               Edit Profile
@@ -114,7 +113,10 @@ class Settings extends Component {
 
             <Grid container justify="center">
 
-              <Avatar variant={"circle"} style={styles.avatar}> {this.state.name[0].toUpperCase()} </Avatar>
+              <Grid item xs={10} style={{ 'display': 'flex', 'flexDirection': 'column', 'justifyContent': 'center', 'alignItems': 'center' }}>
+                <Avatar variant={"circle"} style={styles.avatar}> {this.state.name[0].toUpperCase()} </Avatar>
+                <br />
+              </Grid>
 
               <Grid item xs={10}>
 
