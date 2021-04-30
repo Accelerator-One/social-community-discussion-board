@@ -10,7 +10,13 @@ https://accelerator-one.github.io/material-board/
 
 ### Screenshots
 
-<!-- TODO: Add more screenshots -->
+<br/>
+
+- Main panel
+  !["Home"](/screenshots/a2.png)
+
+<br/>
+
 - Settings panel
   !["settings"](/screenshots/a1.png)
 
