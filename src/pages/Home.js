@@ -1,10 +1,9 @@
 // Environment dependencies
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 // Material dependencies
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import { blue } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 
@@ -12,15 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import Post from '../cmp/Post.js';
 import Avatar from '@material-ui/core/Avatar';
 
+// Redux store connection
+import { connect } from 'react-redux';
+
 // Home component
-class Home extends PureComponent {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() { }
+class Home extends React.Component {
 
   render() {
 
@@ -50,21 +45,33 @@ class Home extends PureComponent {
 
             <Paper style={{ ...styles.padding, ...styles.center }} spacing={2}>
 
-              <Avatar variant={"circle"} style={styles.avatar}> A </Avatar>
+              <Avatar variant={"circle"} style={styles.avatar}> {this.props.user.name[0]} </Avatar>
 
               <Typography>
                 <br />
-                Aditya Thakur
+                {this.props.user.name}
+                <hr />
               </Typography>
 
-              <Link> View profile </Link>
+              <p style={{ 'textAlign': 'center' }}>
+                {this.props.user.about}
+              </p>
 
             </Paper>
 
           </Grid>
 
           <Grid item xs={12} sm={8} style={styles.padding}>
-            <Post />
+
+            {
+              // Listing posts
+              this.props.posts.map(data => {
+                return <Post key={data.timestamp} data={data}
+                  updateLiked={this.props.updateLiked}
+                  insertComment={this.props.addComment} />
+              })
+            }
+
           </Grid>
         </Grid>
       </>
@@ -72,4 +79,15 @@ class Home extends PureComponent {
   }
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+const dispatchStateToProps = (dispatch) => {
+  return {
+    updateLiked: () => { dispatch({ type: {}, action: "UPDATE_LIKED" }) },
+    addComment: (name, timestamp, comment) => { dispatch({ type: { name, timestamp, comment }, action: "INSERT_COMMENT" }) }
+  };
+};
+
+export default connect(mapStateToProps, dispatchStateToProps)(Home);

@@ -23,7 +23,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // Asset(s)
 import Comment from './Comment.js';
-import TestImg from '../assets/testImg.jpg';
 import { TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,15 +50,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Post() {
+export default function Post({ data, updateLiked, insertComment }) {
+
+  console.log("Rendered!");
+  // console.log(data, updateLiked, insertComment);
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const [liked, setLiked] = React.useState(false);
-  const [comments, addComment] = React.useState([
-    { "uid":"1", "name":"Newton", "message":"I'll just pass on this one..."},
-    { "uid":"2", "name":"Kelper", "message":"Wow! looks great"}
-  ]);
+  const [liked, setLiked] = React.useState(data.liked);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -67,26 +65,29 @@ export default function Post() {
 
   const submitComment = (evt) => {
 
-    if(evt.code === 'Enter') {
-      let uid = comments.length;
+    if (evt.code === 'Enter') {
+      let timestamp = Date.now();
       let name = 'Aditya Thakur';
-      let message = evt.target.value;
+      let comment = evt.target.value;
 
-      addComment([{uid, name, message},...comments]);
+      insertComment(name, timestamp, comment);
       evt.target.value = "";
       setExpanded(true);
 
     }
-    // addComment()
-
   };
+
+  function parser(time) {
+    let arr = Date(time).split(' ');
+    return arr[1] + " " + arr[2] + ", " + arr[3];
+  }
 
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            V
+            {data.name[0]}
           </Avatar>
         }
         action={
@@ -94,28 +95,23 @@ export default function Post() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Vikram Singh"
-        subheader="Apr 30, 2021"
+        title={data.name}
+        subheader={parser(data.timestamp)}
       />
+
       <CardMedia
         className={classes.media}
-        image={TestImg}
-        title="forest and wildlife"
+        image={data.image}
+        title={data.name}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          The dense forest of Himalayas will soothe all your frustations.
-          <br />
-          Trying visiting here once. You won't regret it...
+          {data.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon onClick={() => setLiked(!liked)} style={
-            (liked) ? {
-              "color": red[500]
-            } : {}
-          } />
+        <IconButton aria-label="like" onClick={() => { updateLiked(); setLiked(!liked); }}>
+          <FavoriteIcon style={(liked) ? { "color": red[500] } : {}} />
         </IconButton>
 
         <TextField
@@ -143,12 +139,12 @@ export default function Post() {
 
           {
             // Comments list
-            comments.map(({uid, name, message}) => {
-              return (<span key={uid}>
-                        <br/>
-                        <Comment uid={uid} name={name} message={message} />
-                        <br/>
-                      </span>);
+            data.comments.map(({ timestamp, name, comment }) => {
+              return (<span key={timestamp}>
+                <br />
+                <Comment uid={timestamp} name={name} message={comment} />
+                <br />
+              </span>);
             })
           }
 

@@ -18,6 +18,9 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Avatar from '@material-ui/core/Avatar';
 
+// Redux store connection
+import { connect } from 'react-redux';
+
 // Style configuration
 const styles = {
   paper: {
@@ -40,9 +43,7 @@ class Settings extends PureComponent {
     this.state = {
       open: false,
       error: false,
-      name: "Aditya",
       note: "",
-      bio: ""
     };
   }
 
@@ -82,7 +83,7 @@ class Settings extends PureComponent {
       return;
     }
 
-    await this.setState({ ...this.state, name, bio });
+    await this.props.updateUser(name, bio);
     this.openSnackBar("Changes saved");
 
   }
@@ -96,8 +97,8 @@ class Settings extends PureComponent {
       this.setState({ ...this.state, error: true });
     else
       this.setState({ ...this.state, error: false });
-  }
 
+  }
 
   render() {
     return (
@@ -114,7 +115,7 @@ class Settings extends PureComponent {
             <Grid container justify="center">
 
               <Grid item xs={10} style={{ 'display': 'flex', 'flexDirection': 'column', 'justifyContent': 'center', 'alignItems': 'center' }}>
-                <Avatar variant={"circle"} style={styles.avatar}> {this.state.name[0].toUpperCase()} </Avatar>
+                <Avatar variant={"circle"} style={styles.avatar}> {this.props.name[0].toUpperCase()} </Avatar>
                 <br />
               </Grid>
 
@@ -132,6 +133,7 @@ class Settings extends PureComponent {
                   placeholder="Your name here"
                   helperText="Name field cannot be empty"
                   onChange={this.validate}
+                  defaultValue={this.props.name}
                 />
 
                 <TextField
@@ -143,6 +145,7 @@ class Settings extends PureComponent {
                   fullWidth={true}
                   rows={2}
                   placeholder="Write something about yourself"
+                  defaultValue={this.props.about}
                 />
 
               </Grid>
@@ -189,4 +192,14 @@ class Settings extends PureComponent {
   };
 };
 
-export default Settings;
+const mapStateToProps = (state) => {
+  return state["user"];
+};
+
+const dispatchStateToProps = (dispatch) => {
+  return {
+    updateUser: (name, about) => dispatch({ type: { name, about }, action: "UPDATE_USER" })
+  }
+}
+
+export default connect(mapStateToProps, dispatchStateToProps)(Settings);

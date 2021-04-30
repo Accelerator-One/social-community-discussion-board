@@ -6,16 +6,13 @@ import { withRouter } from 'react-router-dom';
 import Home from './pages/Home.js';
 import Settings from './pages/Settings.js';
 
+// Redux initialization
+import { Provider } from 'react-redux';
+import store from './assets/store.js';
+
 // Content panel
 class Content extends React.Component {
 
-  // TODO: Initialize 'react-redux' store via stub
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  // REASON: Support for branched paths on 'gh-pages'
   conditionalRouter = () => {
 
     const path = String(this.props.location.pathname);
@@ -26,7 +23,11 @@ class Content extends React.Component {
   }
 
   render() {
-    return (<> { this.conditionalRouter()} </>);
+    return (
+      <Provider store={store}>
+        { this.conditionalRouter()}
+      </Provider>
+    )
   }
 };
 

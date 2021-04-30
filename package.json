@@ -16,7 +16,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "docsbuild" : "npx react-docgen . -o docs.json --pretty && npm run build",
+    "docsbuild": "npx react-docgen . -o docs.json --pretty",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

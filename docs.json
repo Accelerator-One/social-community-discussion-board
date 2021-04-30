@@ -24,7 +24,7 @@
   },
   "src/cmp/Post.js": {
     "description": "",
-    "displayName": "RecipeReviewCard",
+    "displayName": "Post",
     "methods": []
   },
   "src/cmp/SideBar.js": {
