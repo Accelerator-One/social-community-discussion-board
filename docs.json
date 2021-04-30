@@ -1,47 +1,59 @@
 {
   "src/App.js": {
-    "description": "",
+    "description": "Persistent drawer layout",
     "displayName": "App",
     "methods": []
   },
   "src/Content.js": {
-    "description": "",
+    "description": "Content panel intialized with central store and routing logic",
     "displayName": "Content",
     "methods": [
       {
         "name": "conditionalRouter",
-        "docblock": null,
+        "docblock": "Custom routing logic for web app\n@returns JSX.Element",
         "modifiers": [],
         "params": [],
-        "returns": null
+        "returns": {
+          "description": "JSX.Element",
+          "type": null
+        },
+        "description": "Custom routing logic for web app"
       }
     ]
   },
   "src/cmp/Comment.js": {
-    "description": "",
+    "description": "Custom implementation for comment box\n@param {{ uid:Number, name:String, message:String }}:any param\n@returns JSX.Element",
     "displayName": "Comment",
     "methods": []
   },
   "src/cmp/Post.js": {
-    "description": "",
+    "description": "Post component (default) for main panel\n@param {{ data:any, updateLiked:function, insertComment:function }}:any param \n@returns JSX.Element",
     "displayName": "Post",
     "methods": []
   },
   "src/cmp/SideBar.js": {
-    "description": "",
+    "description": "Sidebar containing navigation links",
     "displayName": "SideBar",
     "methods": [
       {
         "name": "isSelected",
-        "docblock": null,
+        "docblock": "Highlights navlink for selected route\n@param {string} path \n@returns boolean",
         "modifiers": [],
         "params": [
           {
             "name": "path",
-            "type": null
+            "description": null,
+            "type": {
+              "name": "string"
+            },
+            "optional": false
           }
         ],
-        "returns": null
+        "returns": {
+          "description": "boolean",
+          "type": null
+        },
+        "description": "Highlights navlink for selected route"
       },
       {
         "name": "openDialog",
@@ -60,7 +72,7 @@
     ]
   },
   "src/pages/Home.js": {
-    "description": "",
+    "description": "Implementation for Home panel component",
     "displayName": "Home",
     "methods": []
   },
@@ -89,28 +101,34 @@
       },
       {
         "name": "cleaner",
-        "docblock": null,
+        "docblock": "Clean all text fields",
         "modifiers": [
           "async"
         ],
         "params": [],
-        "returns": null
+        "returns": null,
+        "description": "Clean all text fields"
       },
       {
         "name": "saveChanges",
-        "docblock": null,
+        "docblock": "Save valid user profile changes to store\n@returns null",
         "modifiers": [
           "async"
         ],
         "params": [],
-        "returns": null
+        "returns": {
+          "description": "null",
+          "type": null
+        },
+        "description": "Save valid user profile changes to store"
       },
       {
         "name": "validate",
-        "docblock": null,
+        "docblock": "Validates required text fields",
         "modifiers": [],
         "params": [],
-        "returns": null
+        "returns": null,
+        "description": "Validates required text fields"
       }
     ]
   }

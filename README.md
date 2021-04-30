@@ -1,4 +1,4 @@
-## Material Board
+## Material board
 Implementation of social media user panel with Material UI and React
 
 <br/>
@@ -12,12 +12,12 @@ https://accelerator-one.github.io/material-board/
 
 <br/>
 
-- Main panel
+- Main panel  
   !["Home"](/screenshots/a2.png)
 
 <br/>
 
-- Settings panel
+- Settings panel  
   !["settings"](/screenshots/a1.png)
 
 <br/>
@@ -45,7 +45,7 @@ https://accelerator-one.github.io/material-board/
 
 - Generating component documentation
   ```bash
-  npx react-docgen . -o docs.json --pretty
+  npm run docs
   ```
 
 <br/>

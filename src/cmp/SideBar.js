@@ -20,7 +20,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-// Sidebar panel
+/**
+ * Sidebar containing navigation links
+ */
 class SideBar extends React.Component {
 
   constructor(props) {
@@ -28,6 +30,11 @@ class SideBar extends React.Component {
     this.state = { open: false };
   }
 
+  /**
+   * Highlights navlink for selected route
+   * @param {string} path 
+   * @returns boolean
+   */
   isSelected = (path) => {
     return String(this.props.location.pathname).endsWith(path);
   }

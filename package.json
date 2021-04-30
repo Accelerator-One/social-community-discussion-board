@@ -1,6 +1,6 @@
 {
   "name": "material-board",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -16,7 +16,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "docsbuild": "npx react-docgen . -o docs.json --pretty",
+    "docs": "npx react-docgen . -o docs.json --pretty",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

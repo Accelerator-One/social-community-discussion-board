@@ -10,9 +10,15 @@ import Settings from './pages/Settings.js';
 import { Provider } from 'react-redux';
 import store from './assets/store.js';
 
-// Content panel
-class Content extends React.Component {
+/**
+ * Content panel intialized with central store and routing logic
+ */
+class Content extends React.PureComponent {
 
+  /**
+   * Custom routing logic for web app
+   * @returns JSX.Element
+   */
   conditionalRouter = () => {
 
     const path = String(this.props.location.pathname);

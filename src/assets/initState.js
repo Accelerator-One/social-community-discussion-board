@@ -1,8 +1,10 @@
-// STUB: Local testing
-let data = {
+/**
+ * @description "Local stub for testing"
+ */
+let stub = {
   user: {
     name: "Aditya Thakur",
-    about: "An airhead learning random stuff!"
+    about: "An airhead learning random stuff"
   },
   posts: [{
     timestamp: 1619765165565,
@@ -25,4 +27,4 @@ let data = {
   }]
 };
 
-export default data;
+export default stub;

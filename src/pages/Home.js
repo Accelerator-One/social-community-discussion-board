@@ -1,20 +1,22 @@
 // Environment dependencies
 import React from 'react';
 
-// Material dependencies
+// Material component(s)
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { blue } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
 
-// Component dependencies
+// Nested component(s)
 import Post from '../cmp/Post.js';
 import Avatar from '@material-ui/core/Avatar';
 
 // Redux store connection
 import { connect } from 'react-redux';
 
-// Home component
+/**
+ * Implementation for Home panel component
+ */
 class Home extends React.Component {
 
   render() {
@@ -66,9 +68,12 @@ class Home extends React.Component {
             {
               // Listing posts
               this.props.posts.map(data => {
-                return <Post key={data.timestamp} data={data}
+                return <Post key={data.timestamp}
+                  data={data}
+                  name={this.props.user.name}
                   updateLiked={this.props.updateLiked}
-                  insertComment={this.props.addComment} />
+                  insertComment={this.props.addComment}
+                />
               })
             }
 

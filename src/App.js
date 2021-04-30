@@ -83,7 +83,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Persistent drawer
+/**
+ * Persistent drawer layout
+ */
 export default function App() {
 
   const classes = useStyles();
@@ -154,7 +156,6 @@ export default function App() {
         })}>
 
           <div className={classes.drawerHeader} />
-
           <Content />
 
         </main>

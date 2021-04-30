@@ -1,12 +1,13 @@
+// Environment dependencies
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 
+// Material component(s)
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
-
 import Typography from '@material-ui/core/Typography';
 import { red, purple } from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 // Card component(s)
 import Card from '@material-ui/core/Card';
@@ -50,24 +51,30 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Post({ data, updateLiked, insertComment }) {
+/**
+ * Post component (default) for main panel
+ * @param {{ data:any, updateLiked:function, insertComment:function }}:any param 
+ * @returns JSX.Element
+ */
+export default function Post({ data, updateLiked, insertComment, name }) {
 
-  console.log("Rendered!");
   // console.log(data, updateLiked, insertComment);
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [liked, setLiked] = React.useState(data.liked);
 
+  // expand click handler
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  // comment submit handler
   const submitComment = (evt) => {
 
     if (evt.code === 'Enter') {
+
       let timestamp = Date.now();
-      let name = 'Aditya Thakur';
       let comment = evt.target.value;
 
       insertComment(name, timestamp, comment);
@@ -77,6 +84,7 @@ export default function Post({ data, updateLiked, insertComment }) {
     }
   };
 
+  // returns parsed date
   function parser(time) {
     let arr = Date(time).split(' ');
     return arr[1] + " " + arr[2] + ", " + arr[3];
@@ -104,12 +112,15 @@ export default function Post({ data, updateLiked, insertComment }) {
         image={data.image}
         title={data.name}
       />
+
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {data.content}
         </Typography>
       </CardContent>
+
       <CardActions disableSpacing>
+
         <IconButton aria-label="like" onClick={() => { updateLiked(); setLiked(!liked); }}>
           <FavoriteIcon style={(liked) ? { "color": red[500] } : {}} />
         </IconButton>
@@ -133,25 +144,27 @@ export default function Post({ data, updateLiked, insertComment }) {
         >
           <ExpandMoreIcon />
         </IconButton>
+
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
           {
             // Comments list
             data.comments.map(({ timestamp, name, comment }) => {
-              return (<span key={timestamp}>
-                <br />
-                <Comment uid={timestamp} name={name} message={comment} />
-                <br />
-              </span>);
+              return (
+                <span key={timestamp}>
+                  <br />
+                  <Comment uid={timestamp} name={name} message={comment} />
+                  <br />
+                </span>
+              );
             })
           }
-
           <br />
-
         </CardContent>
       </Collapse>
+
     </Card>
   );
 }

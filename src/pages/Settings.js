@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from "@material-ui/core/TextField";
 import { blue } from '@material-ui/core/colors';
 
-// Snackbar compoenent(s)
+// Snackbar component(s)
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 
@@ -57,7 +57,9 @@ class Settings extends PureComponent {
     this.setState({ ...this.state, open: false, note: "" });
   }
 
-  // Clean text fields
+  /**
+   * Clean all text fields
+   */
   cleaner = async () => {
 
     const nameRef = document.getElementById('name');
@@ -71,7 +73,10 @@ class Settings extends PureComponent {
 
   }
 
-  // Save changes
+  /**
+   * Save valid user profile changes to store
+   * @returns null
+   */
   saveChanges = async () => {
 
     let name = document.getElementById('name').value;
@@ -88,7 +93,9 @@ class Settings extends PureComponent {
 
   }
 
-  // Validation component
+  /**
+   * Validates required text fields
+   */
   validate = () => {
 
     let name = document.getElementById('name').value;
